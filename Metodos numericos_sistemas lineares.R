@@ -35,9 +35,10 @@ eliminacao_de_gauss <- function(A, b) {
       m = A[i, k] / A[k, k]
       A[i, k] = 0
       
+      b[i] = b[i] - (m * b[k])
+      
       for (j in (k + 1):n ) {
         A[i, j] = A[i, j] - (m * A[k, j])
-        b[i] = b[i] - (m * b[k])
     }
   }
 }
@@ -56,11 +57,13 @@ resolucao_sistemas_gerais <- function(A, b) {
       m = A[i, k] / A[k, k]
       A[i, k] = 0
       
+      b[i] = b[i] - (m * b[k])
+      
       for (j in (k + 1):n ) {
         A[i, j] = A[i, j] - (m * A[k, j])
-        b[i] = b[i] - (m * b[k])
       }
     }
   }
   return(resolucao_sistema_triangular_superior(A, b))
 }
+
